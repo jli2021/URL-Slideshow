@@ -11,20 +11,17 @@ function showURL(i){
 	chrome.tabs.update(null, {url: urls[i]});
 };
 
-
 var x = 0;                     
 
 function myLoop () { 
-   setTimeout(function () {    /
-      chrome.tabs.update(null, {url: urls[x%4]});       
+   setTimeout(function () {
+      showURL(x%4);       
       x++;                     
       if (x < urls.length * 3) {
          myLoop();
       }
    }, 2000)
 }
-
-
 
 chrome.browserAction.onClicked.addListener(function(activeTab){
 	chrome.tabs.create({url: startURL});
